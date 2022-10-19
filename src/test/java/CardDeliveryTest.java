@@ -26,7 +26,7 @@ public class CardDeliveryTest {
     String date = generateDate(3);
 
 
-    private WebDriver driver;
+     WebDriver driver;
 
     @BeforeAll
     static void setupAll() {
