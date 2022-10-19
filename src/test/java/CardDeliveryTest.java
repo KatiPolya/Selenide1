@@ -26,24 +26,6 @@ public class CardDeliveryTest {
     String date = generateDate(3);
 
 
-     WebDriver driver;
-
-    @BeforeAll
-    static void setupAll() {
-        WebDriverManager.chromedriver().setup();
-    }
-
-    @BeforeEach
-    void setup() {
-        driver = new ChromeDriver();
-    }
-
-    @AfterEach
-    void tearDown() {
-        driver.quit();
-        driver = null;
-    }
-
 
     @Test
     void shouldOrderCard() {
