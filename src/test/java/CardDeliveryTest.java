@@ -23,12 +23,11 @@ public class CardDeliveryTest {
         return LocalDate.now().plusDays(days).format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
     }
 
-    String date = generateDate(3);
-
-
 
     @Test
     void shouldOrderCard() {
+
+        String date = generateDate(3);
 
         open("http://localhost:9999/");
 
@@ -41,8 +40,9 @@ public class CardDeliveryTest {
         $(".checkbox__box").click();
         $(byText("Забронировать")).click();
 
-        $(byText("Встреча успешно забронирована на")).shouldBe(Condition.visible, Duration.ofSeconds(15));
-        $(byText(date)).shouldBe(Condition.visible, Duration.ofSeconds(15));
+        $(".notification__content")
+                .shouldHave(Condition.text("Встреча успешно забронирована на " + date), Duration.ofSeconds(15))
+                .shouldBe(Condition.visible);
 
 
     }
